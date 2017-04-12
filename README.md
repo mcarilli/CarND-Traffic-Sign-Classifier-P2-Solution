@@ -76,7 +76,7 @@ normalized test set, rotate it by a small amount using scipy.ndimage.interpolati
 and add a small amount of random noise using np.random.normal.
 
 I wrapped this function in a loop that appended data to the training set such that at least 1000 
-instances of each label were represented.  Labels to augment, and the number of augmented instances
+images of each label were represented.  Labels to augment, and the number of augmented images
 to add to each label, were chosen using the histogram of each label computed earlier.
 For a given label, each augmented image was added by first selected a random image from the original
 (unaugmented) data, then applying the rotation+random noise function to it.
@@ -125,8 +125,8 @@ I took care to change ```dropout``` to 1.0 for validation and testing.
 
 My final model results were:
 * training set accuracy of 99.9%
-* validation set accuracy of 96.3%  
-* test set accuracy of 94.9%
+* validation set accuracy of 96.2%  
+* test set accuracy of 95.2%
 
 I began with the LeNet architecture from the lab.  In our lab, LeNet proved very effective at 
 classifying black-and-white handwritten digits, so it was plausible to expect that it 
