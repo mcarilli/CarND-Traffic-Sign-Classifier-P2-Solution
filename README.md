@@ -107,7 +107,7 @@ conv1 = tf.nn.relu(conv1)
 conv1 = tf.nn.dropout(conv1, keep_prob)
 ```
 
-The myLeNet function accepted keep_prob as an additional parameter.
+The myLeNet function was modified to accept keep_prob as an additional parameter.
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
