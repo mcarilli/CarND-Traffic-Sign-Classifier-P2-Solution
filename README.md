@@ -11,14 +11,11 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image4]: ./websigns/bicyclecrossing.jpg "Bicycle Crossing"
+[image5]: ./websigns/nopassing.jpg "No Passing"
+[image6]: ./websigns/straightorright.jpg "Turn straight or right"
+[image7]: ./websigns/roadwork.jpg "Road Work"
+[image8]: ./websigns/childrencrossing.jpg "Children Crossing"
 
 ---
 
@@ -113,29 +110,41 @@ The myLeNet function accepted keep_prob as an additional parameter.
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
+I used an Adams optimizer with the following hyperparameters:
+```python
+EPOCHS = 40
+BATCH_SIZE = 128
+rate = 0.001
+dropout = .75  # keep_prob for dropout layers
+```
 
-I trained with a dropout keep_prob of 0.75, but took care to use keep_prob of 1.0 for the validation
-step.
+I took care to change ```dropout``` to 1.0 for validation and testing.
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 99.9%
+* validation set accuracy of 96.3%  
+* test set accuracy of 94.9%
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+I began with the LeNet architecture from the lab.  In our lab, LeNet proved very effective at 
+classifying black-and-white handwritten digits, so it was plausible to expect that it 
+could identify street sign images, which are of similar overall complexity.
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+I first modified LeNet to accept an input of color depth 3 and yield an output of 43 classes 
+instead of 10.  As a "zero order optimization" I tried simply dialing up the number of training
+epochs to 40 to see where the validation accuracy would plateau (or potentially peak and decline
+due to overfitting).  Unfortunately, I never observed validation set accuracy of greater than 92%,
+although the accuracy on the test set climbed to 99.9%ish.  This led me to believe that the
+network was mildly overfitting.
+
+To combat overfitting, I implemented a dropout layer after each relu activation. 
+keep_prob was added as a tunable hyperparameter.  I tried training with several values of keep_prob
+ranging from .6 to .95, and found that keep_prob = 0.75 consistently delivered around 96% validation
+accuracy.  I couldn't get it much higher than that.
+
+I also tried replacing the relu activation functions with sigmoids, but that did not appear to 
+make much difference. 
 
 ### Test a Model on New Images
 
@@ -146,22 +155,33 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The first image might be difficult to classify because ...
+First image:  Writing across sign + white bar at bottom might be interpreted as a feature
+Second image:  Rotated from horizontal
+Third image:  Writing, X across sign
+Fourth image:  Picture taken from low angle
+Fifth image:  Picture taken from low angle + writing across sign + white bar at bottom
+
+All five images were not quite square.  In resizing and interpolating them down to 32x32 squares,
+their aspect ratios are skewed.  This may also prove a challenge for the network.
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
+| Image			        |     Prediction | 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Bicycle crossing    		| Beware of ice/snow  | 
+| No passing     		| No passing        |
+| Straight or right		| Straight or right |
+| Road work	      		| Road work	    |
+| Children crossing		| Children crossing |
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%.  Both the bicycle crossing sign and the beware of snow sign
+are red and white triangles with relatively delicate internal features 
+containing crossed lines and circular patterns, so it is unsurprising that
+the network would confuse them.  Also, bicycle crossing signs were relatively 
+underrepresented in the initial (unaugmented) training set.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
@@ -170,6 +190,15 @@ of the jupyter notebook or html output contains my
 code for outputting softmax probabilities for each image from the web.
 The top five softmax probabilities for each image are listed, along with bar charts.
 
-In all cases the guess is correct. For all but the "bicyle crossing", the softmax probability is >= 96%.
+For the no passing, straight or right, and road work signs, the model is very
+(>99%) certain.  
 
-Please refer to the jupyter notebook or html output for details.  
+For the bicycle crossing sign, the network is less certain
+(73%) of its incorrect "Beware of ice/snow" guess.  It believes 
+the sign may also be a road work sign (13.7%) or bicycle crossing sign (9.3%).
+
+For the children crossing sign, the model is only 52% certain, and believes
+the sign may be a bicycle crossing sign with 47.6% probability.  This is
+unsurprising because these two sign types are visually similar.
+
+Please refer to the jupyter notebook or html output for more information.
