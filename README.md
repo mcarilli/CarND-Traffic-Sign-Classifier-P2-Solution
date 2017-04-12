@@ -23,6 +23,8 @@ My project code is included in this repository (Traffic_Sign_Classifier.ipynb).
 An html file containing the code along with output for a complete run is also included
 (Traffic_Sign_Classifier.html).
 
+Unfortunately the training/validation/test datasets were too big to upload.  You can run this notebook, but only if you clone the repo and add the "traffic-signs-data" directory containing "test.p," "train.p," and "valid.p."
+
 I installed TensorFlow with GPU support on my laptop, which has an Nvidia GPU.
 TensorFlow with GPU support was observed to train my network 
 roughly 9X faster than the CPU-only version.  
@@ -98,7 +100,6 @@ After:
 ```python
 conv1_W = tf.Variable(tf.truncated_normal(shape=(5, 5, 3, 6), mean = mu, stddev = sigma))
 ```
-that I modified the output layer
 
 I also added a dropout layer after each activation (relu) layer, for example:
 ```python
@@ -152,13 +153,19 @@ make much difference.
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
-
+![alt text][image4] 
 First image:  Writing across sign + white bar at bottom might be interpreted as a feature
+
+![alt text][image5] 
 Second image:  Rotated from horizontal
+
+![alt text][image6]
 Third image:  Writing, X across sign
+
+![alt text][image7] 
 Fourth image:  Picture taken from low angle
+
+![alt text][image8]
 Fifth image:  Picture taken from low angle + writing across sign + white bar at bottom
 
 All five images were not quite square.  In resizing and interpolating them down to 32x32 squares,
