@@ -154,19 +154,24 @@ make much difference.
 Here are five German traffic signs that I found on the web:
 
 ![alt text][image4] 
-First image:  Writing across sign + white bar at bottom might be interpreted as a feature
+
+Bicycle crossing challenges:  Writing across sign + white bar at bottom might be interpreted as a feature
 
 ![alt text][image5] 
-Second image:  Rotated from horizontal
+
+No passing challenges:  Rotated from horizontal
 
 ![alt text][image6]
-Third image:  Writing, X across sign
+
+Turn straight or right challenges:  Writing, X across sign
 
 ![alt text][image7] 
-Fourth image:  Picture taken from low angle
+
+Road work challenges:  Picture taken from low angle
 
 ![alt text][image8]
-Fifth image:  Picture taken from low angle + writing across sign + white bar at bottom
+
+Children crossing challenges:  Picture taken from low angle + writing across sign + white bar at bottom
 
 All five images were not quite square.  In resizing and interpolating them down to 32x32 squares,
 their aspect ratios are skewed.  This may also prove a challenge for the network.
