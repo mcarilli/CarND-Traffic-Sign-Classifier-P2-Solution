@@ -89,8 +89,7 @@ in the html output or jupyter notebook for more information.
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-My network has essentially the same structure as LeNet from the lab.  The only differences were 
-the following:
+My network, defined in the function `myLeNet()`, has essentially the same structure as LeNet from the lab.  The only differences were the following:
 
 First, I modified the first layer to accept depth-3 (color) images instead of depth-1 images.  Before:
 ```python
@@ -107,7 +106,40 @@ conv1 = tf.nn.relu(conv1)
 conv1 = tf.nn.dropout(conv1, keep_prob)
 ```
 
-The myLeNet function was modified to accept keep_prob as an additional parameter.
+`myLeNet()` was modified to accept keep_prob as an additional parameter.
+
+Here is a diagram of the layers present in the myLeNet() function:
+
+
+| Layer         		|     Description	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Input         		| 32x32x3 RGB image   							| 
+| Convolution 5x5   | 1x1 stride, valid padding, outputs 28x28x6 	|
+| RELU					|												|
+| Dropout					|	 Externally tunable keep_prob					    |
+| Max pool	      	| Size 2x2, strides 2x2, valid padding, outputs 14x14x6				|
+| Convolution 5x5	    | Stride 1, valid padding.  Outputs 10x10x16   						|
+| RELU					|												|
+| Dropout					|	 Externally tunable keep_prob					    |
+| Max pool	      | Size 2x2, strides 2x2, valid padding, outputs 5x5x16				|
+| Flatten		| Input 5x5x16, output 400					|
+| Fully connected	| Input 400, output 120       |
+| RELU					|												|
+| Dropout					|	 Externally tunable keep_prob					    |
+| Fully connected	| Input 120, output 84								|
+| RELU					|												|
+| Dropout					|	 Externally tunable keep_prob					    |
+|	Fully connected	|	 Input 84, output 43 (labels)	|
+
+The output of the above layers was the logits. 
+
+To compute the loss function supplied to the optimizer, I
+took the cross entropy of softmax(logits) with the one-hot-encoded labels of the ground truth data.
+The loss was defined to be the average of the cross entropy across the batch.
+
+The keep_prob parameter was identical for all dropout layers 
+(if I added a different keep_prob for all dropout layers, the parameter space would become much larger,
+and I didn't have the time to thoroughly sweep it out).
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
