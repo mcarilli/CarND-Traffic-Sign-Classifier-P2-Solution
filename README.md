@@ -32,15 +32,15 @@ roughly 9X faster than the CPU-only version.
 Without GPU support, the lab would have been infeasibly time-consuming.
 
 ---
-###Writeup / README
+### Writeup / README
 
 My project code is included in this repository (Traffic_Sign_Classifier.ipynb).
 An html file containing the code along with output for a complete run is also included
 (Traffic_Sign_Classifier.html).
 
-###Data Set Summary & Exploration
+### Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
 I used the len() function to determine size of training, validation, and test
 sets, and the shape attribute to determine individual image shape.
@@ -51,7 +51,7 @@ sets, and the shape attribute to determine individual image shape.
 * The shape of a traffic sign image is 32x32x3.
 * The number of unique classes/labels in the data set is 43.
 
-####2. Include an exploratory visualization of the dataset.
+#### 2. Include an exploratory visualization of the dataset.
 
 Please refer to heading "Include an exploration visualization of the dataset" in the html output.
 A sample image from the training set is shown along with its label. 
