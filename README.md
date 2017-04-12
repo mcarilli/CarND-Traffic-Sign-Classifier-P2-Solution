@@ -135,7 +135,7 @@ could identify street sign images, which are of similar overall complexity.
 I first modified LeNet to accept an input of color depth 3 and yield an output of 43 classes 
 instead of 10.  As a "zero order optimization" I tried simply dialing up the number of training
 epochs to 40 to see where the validation accuracy would plateau (or potentially peak and decline
-due to overfitting).  Unfortunately, I never observed validation set accuracy of greater than 92%,
+due to overfitting).  Unfortunately, I never observed validation set accuracy of greater than 93%,
 although the accuracy on the test set climbed to 99.9%ish.  This led me to believe that the
 network was mildly overfitting.
 
