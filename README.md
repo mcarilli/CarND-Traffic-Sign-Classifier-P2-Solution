@@ -1,4 +1,4 @@
-## Build a Traffic Sign Recognition Project**
+## Build a Traffic Sign Recognition Project
 
 The goals / steps of this project are the following:
 * Load the data set (see below for links to the project data set)
@@ -53,7 +53,7 @@ sets, and the shape attribute to determine individual image shape.
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Please refer to heading "Include an exploration visualization of the dataset" in the html output.
+Please refer to heading **Include an exploration visualization of the dataset** in the html output.
 A sample image from the training set is shown along with its label. 
 Also, a histogram of the number of images of each type in each set is shown for all three sets. 
 Some sign types are underrepresented, although the distribution of sign types in the training,
@@ -85,7 +85,7 @@ For a given label, each augmented image was added by first selected a random ima
 The total size of the original+augmented training set was precomputed, and storage preallocated,
 to avoid calling append() in an inner loop.  
 
-Please refer to heading "Add augmented images such that each sign type has at least 1000 examples"
+Please refer to heading **Add augmented images such that each sign type has at least 1000 examples**
 in the html output or jupyter notebook for more information.
 
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -109,7 +109,7 @@ conv1 = tf.nn.relu(conv1)
 conv1 = tf.nn.dropout(conv1, keep_prob)
 ```
 
-The myLeNet function accepted the keep_prob as an additional parameter.
+The myLeNet function accepted keep_prob as an additional parameter.
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
@@ -148,7 +148,7 @@ Here are five German traffic signs that I found on the web:
 
 The first image might be difficult to classify because ...
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 Here are the results of the prediction:
 
