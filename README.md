@@ -1,4 +1,4 @@
-**Build a Traffic Sign Recognition Project**
+## Build a Traffic Sign Recognition Project**
 
 The goals / steps of this project are the following:
 * Load the data set (see below for links to the project data set)
@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
 
-## Rubric Points
+---
 
 My project code is included in this repository (Traffic_Sign_Classifier.ipynb).
 An html file containing the code along with output for a complete run is also included
