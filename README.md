@@ -145,7 +145,7 @@ ranging from .6 to .95, and found that keep_prob = 0.75 consistently delivered a
 accuracy.  I couldn't get it much higher than that.
 
 I also tried replacing the relu activation functions with sigmoids, but that did not appear to 
-make much difference. 
+make a significant difference. 
 
 ### Test a Model on New Images
 
