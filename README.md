@@ -197,7 +197,7 @@ underrepresented in the initial (unaugmented) training set.
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The cell "Output Top 5 Softmax Probabilities For Each Image Found on the Web" 
+The cell **Output Top 5 Softmax Probabilities For Each Image Found on the Web**
 of the jupyter notebook or html output contains my 
 code for outputting softmax probabilities for each image from the web.
 The top five softmax probabilities for each image are listed, along with bar charts.
