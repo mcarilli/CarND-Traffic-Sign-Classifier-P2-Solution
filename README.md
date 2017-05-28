@@ -1,6 +1,8 @@
 ## Build a Traffic Sign Recognition Project
 
-The goals / steps of this project are the following:
+## Please view Traffic_Sign_Classifier.html for an end-to-end view of how the project runs.
+
+The goals / steps are the following:
 * Load the data set (see below for links to the project data set)
 * Explore, summarize and visualize the data set
 * Design, train and test a model architecture
