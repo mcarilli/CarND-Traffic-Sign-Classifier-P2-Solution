@@ -1,6 +1,6 @@
 ## Build a Traffic Sign Recognition Project (TensorFlow)
 
-## Please view Traffic_Sign_Classifier.html for a complete description of how the project runs.
+## For a complete description of how the project runs, clone the repo and view Traffic_Sign_Classifier.html.
 
 The goals / steps are the following:
 * Load the data set (see below for links to the project data set)
